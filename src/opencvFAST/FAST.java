@@ -55,6 +55,12 @@ public class FAST {
 					
 					t[0] = buffer[i*ImageGray.cols()+j] > 128 ? 'c' : 'f'; // c -> couleur clair, f -> couleur foncé
 					
+					
+					
+					
+					
+					
+					
 					int i2 = i - r; // start from circle's top left
 					int j2 = j - r/2;
 										
@@ -151,30 +157,31 @@ public class FAST {
 						 pc++;
 					 else
 						 pf++;
-					k++;					
-					
-
+					k++;
 					
 					
+					
+					
+					
+					
+										
 					int nbrChangements = 0;
 					
-					//System.out.print(t[0]+", ");
 					for (int l = 2; l < length; l++) {
 						if(t[l] != t[l-1])
 							nbrChangements++;
-						//System.out.print(t[l-1]+", ");
 					}
-					//System.out.println(t[length-1]);
 					
 					if(nbrChangements <= 2)
 					{
 						if((pc == ((length-1)*0.75)-1 && t[0] == 'f') || (pf == ((length-1)*0.75)-1 && t[0] == 'c'))
 						{
 							corners.add(new Px(i, j));
-							Image.put(i, j, new double[] {0, 0, 255}); // change corner's color to red
+							double[] cornerColor =  t[0] == 'f' ? new double[] {0, 0, 255} : new double[] {255, 0, 0};
+							Image.put(i, j, cornerColor); // change corner's color to red or blue
 							for(Px p : circle)
 							{
-								Image.put(p.i, p.j, new double[] {0, 0, 255});
+								Image.put(p.i, p.j, cornerColor);
 							}
 						}
 						
@@ -184,9 +191,13 @@ public class FAST {
 				
 				
 			}
+			
 			ImageViewer v2 = new ImageViewer();
 			v2.show(Image);
+			
+			
 		}
 	}
+	
 	
 }
