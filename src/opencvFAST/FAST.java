@@ -174,7 +174,7 @@ public class FAST {
 					
 					if(nbrChangements <= 2)
 					{
-						if((pc == ((length-1)*0.75)-1 && t[0] == 'f') || (pf == ((length-1)*0.75)-1 && t[0] == 'c'))
+						if((pc >= ((length-1)*0.75)-1 && t[0] == 'f') || (pf >= ((length-1)*0.75)-1 && t[0] == 'c'))
 						{
 							corners.add(new Px(i, j));
 							double[] cornerColor =  t[0] == 'f' ? new double[] {0, 0, 255} : new double[] {255, 0, 0};
