@@ -45,7 +45,7 @@ public class FAST {
 				
 				for (int j = r; j  < ImageGray.width()-r; j++) {
 					
-					int pc = 0; // nbr pts foncÈs
+					int pc = 0; // nbr pts fonc√©s
 					int pf = 0; // nbr pts clairs
 					
 					List<Px> circle = new ArrayList<>();
@@ -53,7 +53,7 @@ public class FAST {
 					int length = r*4+5; 
 					char[] t = new char[length];
 					
-					t[0] = buffer[i*ImageGray.cols()+j] > 128 ? 'c' : 'f'; // c -> couleur clair, f -> couleur foncÈ
+					t[0] = buffer[i*ImageGray.cols()+j] > 128 ? 'c' : 'f'; // c -> couleur clair, f -> couleur fonc√©
 					
 					
 					
@@ -174,7 +174,7 @@ public class FAST {
 					
 					if(nbrChangements <= 2)
 					{
-						if((pc >= ((length-1)*0.75)-1 && t[0] == 'f') || (pf >= ((length-1)*0.75)-1 && t[0] == 'c'))
+						if((pc >= ((length-1)*0.75)-1 && pf > r-1 && t[0] == 'f') || (pf >= ((length-1)*0.75)-1 && pc > r-1 && t[0] == 'c'))
 						{
 							corners.add(new Px(i, j));
 							double[] cornerColor =  t[0] == 'f' ? new double[] {0, 0, 255} : new double[] {255, 0, 0};
